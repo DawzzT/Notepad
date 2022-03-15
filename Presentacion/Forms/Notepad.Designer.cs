@@ -29,6 +29,8 @@ namespace Presentacion.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notepad));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -38,11 +40,20 @@ namespace Presentacion.Forms
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuClickAbrir = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuClickEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuClickNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuClickCarpeta = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuClickArchivotxt = new System.Windows.Forms.ToolStripMenuItem();
+            this.carpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.archivoDeTextoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -86,10 +97,14 @@ namespace Presentacion.Forms
             // 
             // treeView1
             // 
+            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(268, 423);
             this.treeView1.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
+            this.treeView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseUp);
             // 
             // richTextBox1
             // 
@@ -101,27 +116,95 @@ namespace Presentacion.Forms
             // 
             // nuevoToolStripMenuItem
             // 
+            this.nuevoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.carpetaToolStripMenuItem,
+            this.archivoDeTextoToolStripMenuItem});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
             this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
+            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuClickAbrir,
+            this.menuClickEliminar,
+            this.menuClickNuevo});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            // 
+            // menuClickAbrir
+            // 
+            this.menuClickAbrir.Name = "menuClickAbrir";
+            this.menuClickAbrir.Size = new System.Drawing.Size(180, 22);
+            this.menuClickAbrir.Text = "Abrir";
+            this.menuClickAbrir.Click += new System.EventHandler(this.menuClickAbrir_Click);
+            // 
+            // menuClickEliminar
+            // 
+            this.menuClickEliminar.Name = "menuClickEliminar";
+            this.menuClickEliminar.Size = new System.Drawing.Size(180, 22);
+            this.menuClickEliminar.Text = "Eliminar";
+            this.menuClickEliminar.Click += new System.EventHandler(this.menuClickEliminar_Click);
+            // 
+            // menuClickNuevo
+            // 
+            this.menuClickNuevo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuClickCarpeta,
+            this.menuClickArchivotxt});
+            this.menuClickNuevo.Name = "menuClickNuevo";
+            this.menuClickNuevo.Size = new System.Drawing.Size(180, 22);
+            this.menuClickNuevo.Text = "Nuevo";
+            this.menuClickNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
+            // 
+            // menuClickCarpeta
+            // 
+            this.menuClickCarpeta.Name = "menuClickCarpeta";
+            this.menuClickCarpeta.Size = new System.Drawing.Size(180, 22);
+            this.menuClickCarpeta.Text = "Carpeta";
+            this.menuClickCarpeta.Click += new System.EventHandler(this.menuClickCarpeta_Click);
+            // 
+            // menuClickArchivotxt
+            // 
+            this.menuClickArchivotxt.Name = "menuClickArchivotxt";
+            this.menuClickArchivotxt.Size = new System.Drawing.Size(180, 22);
+            this.menuClickArchivotxt.Text = "Archivo de texto";
+            this.menuClickArchivotxt.Click += new System.EventHandler(this.menuClickArchivotxt_Click);
+            // 
+            // carpetaToolStripMenuItem
+            // 
+            this.carpetaToolStripMenuItem.Name = "carpetaToolStripMenuItem";
+            this.carpetaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.carpetaToolStripMenuItem.Text = "Carpeta";
+            this.carpetaToolStripMenuItem.Click += new System.EventHandler(this.carpetaToolStripMenuItem_Click);
+            // 
+            // archivoDeTextoToolStripMenuItem
+            // 
+            this.archivoDeTextoToolStripMenuItem.Name = "archivoDeTextoToolStripMenuItem";
+            this.archivoDeTextoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archivoDeTextoToolStripMenuItem.Text = "Archivo de texto";
+            this.archivoDeTextoToolStripMenuItem.Click += new System.EventHandler(this.archivoDeTextoToolStripMenuItem_Click);
             // 
             // Notepad
             // 
@@ -130,6 +213,7 @@ namespace Presentacion.Forms
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Notepad";
             this.Text = "Notepad";
@@ -139,6 +223,7 @@ namespace Presentacion.Forms
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +240,13 @@ namespace Presentacion.Forms
         private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuClickAbrir;
+        private System.Windows.Forms.ToolStripMenuItem menuClickEliminar;
+        private System.Windows.Forms.ToolStripMenuItem menuClickNuevo;
+        private System.Windows.Forms.ToolStripMenuItem menuClickCarpeta;
+        private System.Windows.Forms.ToolStripMenuItem menuClickArchivotxt;
+        private System.Windows.Forms.ToolStripMenuItem carpetaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem archivoDeTextoToolStripMenuItem;
     }
 }

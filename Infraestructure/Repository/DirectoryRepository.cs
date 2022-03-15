@@ -20,7 +20,7 @@ namespace Infraestructure.Repository
 
         public DirectoryInfo CreateFile(string path, string name)
         {
-            using (FileStream fileStream = File.Create(path + @"\" + name + ".txt"))
+            using (FileStream fileStream = File.Create(path + @"\" + name))
             {
                 fileStream.Close();
             }

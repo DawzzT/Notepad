@@ -58,7 +58,7 @@ namespace Presentacion.Forms
                     MessageBox.Show("Ningun archivo seleccionado");
                     return;
                 }
-                treeView1.BeginUpdate();
+                // treeView1.BeginUpdate();
                 Nuevo nuevo = new Nuevo();
                 nuevo.ShowDialog();
                 string name = nuevo.nombre + ".txt";
@@ -68,7 +68,9 @@ namespace Presentacion.Forms
                     TreeNode node = new TreeNode( name);
                     node.Tag = info.FullName;
                     treeView1.SelectedNode.Nodes.Add(node);
-                    
+                    //treeView1.EndUpdate(); error de carga se reemplaza por las lineas de codigo siguiente
+                    treeView1.Nodes.Clear();
+                    treeView1.Nodes.Add(AddDirectoryNodes(directServices.Create(generalPath)));
                 }
                 else
                 {

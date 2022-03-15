@@ -118,6 +118,7 @@ namespace Presentacion.Forms
 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             if (generalPath == null)
             {
                 nuevoToolStripMenuItem.Enabled = false;
@@ -132,8 +133,12 @@ namespace Presentacion.Forms
                 salirToolStripMenuItem.Enabled = true;
                 abrirToolStripMenuItem.Enabled = true;
             }
-            if (generalPath == string.Empty || richTextBox1.Text == string.Empty)
+            if (generalPath == string.Empty || richTextBox1.Text == string.Empty )
             {
+                
+               
+                 
+                
                 guardarToolStripMenuItem.Enabled = false;
             }
             else
@@ -273,10 +278,18 @@ namespace Presentacion.Forms
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            treeView1.BeginUpdate();
-            directServices.OverWrite(treeView1.SelectedNode.Tag.ToString(), richTextBox1.Text);
-            treeView1.EndUpdate();
-            richTextBox1.Clear();
+            if (Path.GetExtension(treeView1.SelectedNode.FullPath) == ".txt")
+            {
+                treeView1.BeginUpdate();
+                directServices.OverWrite(treeView1.SelectedNode.Tag.ToString(), richTextBox1.Text);
+                treeView1.EndUpdate();
+                richTextBox1.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un archivo de texto");
+            }
+           
         }
 
         private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)

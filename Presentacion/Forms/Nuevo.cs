@@ -12,7 +12,7 @@ namespace Presentacion.Forms
 {
     public partial class Nuevo : Form
     {
-        //Hola//
+        
         public string nombre { get; set; }
         public Nuevo()
         {

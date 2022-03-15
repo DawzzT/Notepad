@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Presentacion
+namespace Presentacion.Forms
 {
-    public partial class Form1 : Form
+    public partial class frmNotepad : Form
     {
-        public Form1()
+        public frmNotepad(AppCore.Services.DirectoryServices directoryServices)
         {
             InitializeComponent();
         }

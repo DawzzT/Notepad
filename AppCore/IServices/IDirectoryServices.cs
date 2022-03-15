@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AppCore.IServices
 {
-    interface IDirectoryServices : IServices<DirectoryInfo>
+    public interface IDirectoryServices : IServices<DirectoryInfo>
     {
         void Delete(string path);
 

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Presentacion.Forms
 {
-    public partial class frmNotepad : Form
+    public partial class Notepad : Form
     {
-        public frmNotepad(AppCore.Services.DirectoryServices directoryServices)
+        public Notepad(AppCore.IServices.IDirectoryServices directoryServices)
         {
             InitializeComponent();
+        }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

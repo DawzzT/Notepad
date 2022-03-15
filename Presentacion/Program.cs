@@ -28,7 +28,7 @@ namespace Presentacion
             Application.EnableVisualStyles();
             var container = builder.Build();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmNotepad(container.Resolve<DirectoryServices>()));
+            Application.Run(new Notepad(container.Resolve<IDirectoryServices>()));
         }
     }
 }

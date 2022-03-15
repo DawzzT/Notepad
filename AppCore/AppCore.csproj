@@ -44,6 +44,8 @@
     <Compile Include="IServices\IDirectoryServices.cs" />
     <Compile Include="IServices\IServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseServices.cs" />
+    <Compile Include="Services\DirectoryServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
